@@ -1,0 +1,41 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <h2>🔐 Login to EcoMate</h2>
+    <form (ngSubmit)="login()">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Email"
+        required
+      />
+
+ <div class="password-wrapper">
+  <input
+    [type]="showPassword ? 'text' : 'password'"
+    [(ngModel)]="password"
+    name="password"
+    placeholder="Password"
+    required
+  />
+  <span
+    class="toggle-pass"
+    (click)="togglePassword()"
+    title="{{ showPassword ? 'Hide password' : 'Show password' }}"
+  >
+    {{ showPassword ? '🙈' : '👁️' }}
+  </span>
+</div>
+
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <p class="redirect">
+      Don't have an account?
+      <a (click)="goToRegister()">Register here</a>
+    </p>
+  </div>
+</div>
