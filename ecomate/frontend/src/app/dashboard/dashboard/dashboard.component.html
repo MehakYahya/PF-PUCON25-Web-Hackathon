@@ -1,0 +1,33 @@
+<div class="dashboard">
+  <h2>Welcome, {{ user?.name }}</h2>
+
+  <ng-container *ngIf="user?.currentFootprint < 0; else footprintBlock">
+    <p class="savings">
+      🌱 You’ve saved <strong>{{ -user.currentFootprint | number: '1.2-2' }}</strong> kg CO₂ through eco-friendly activities!
+    </p>
+  </ng-container>
+
+  <ng-template #footprintBlock>
+    <p>Your Current Carbon Footprint: <strong>{{ user?.currentFootprint | number: '1.2-2' }}</strong> kg CO₂</p>
+  </ng-template>
+
+  <p>Your Target Goal: <strong>{{ user?.carbonGoal || 0 }}</strong> kg CO₂</p>
+
+  <div class="progress-container">
+    <div
+      class="progress-bar"
+      [style.width.%]="getGoalProgress()"
+      [style.background]="user?.currentFootprint < 0 ? 'green' : '#4caf50'">
+    </div>
+  </div>
+
+  <p *ngIf="user?.carbonGoal">Progress: {{ getGoalProgress() | number: '1.0-0' }}%</p>
+
+  <h3>Update Carbon Goal</h3>
+  <input type="number" [(ngModel)]="goalInput" placeholder="Set your goal" />
+  <button (click)="updateGoal()">Save Goal</button>
+
+  <p *ngIf="msg" style="color: green">{{ msg }}</p>
+  
+  
+</div>
