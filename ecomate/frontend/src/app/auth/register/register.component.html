@@ -1,0 +1,103 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <h2>📝 Register for EcoMate</h2>
+
+    <form (ngSubmit)="register()" #registerForm="ngForm" novalidate>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        placeholder="Your Name"
+        required
+        #nameInput="ngModel"
+      />
+      <div *ngIf="nameInput.invalid && nameInput.touched" class="error">
+        Name is required.
+      </div>
+
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="Email Address"
+        required
+        email
+        #emailInput="ngModel"
+      />
+      <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+        Valid email required.
+      </div>
+
+      <div class="password-wrapper">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Create Password"
+          required
+          minlength="6"
+          #passwordInput="ngModel"
+          (input)="checkPasswords()"
+        />
+        <span
+          class="toggle-pass"
+          (click)="togglePassword()"
+          title="{{ showPassword ? 'Hide password' : 'Show password' }}"
+          >{{ showPassword ? '🙈' : '👁️' }}</span
+        >
+      </div>
+      <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+        Password must be at least 6 characters.
+      </div>
+
+      <div class="password-wrapper">
+        <input
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          id="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          required
+          #confirmPasswordInput="ngModel"
+          (input)="checkPasswords()"
+        />
+        <span
+          class="toggle-pass"
+          (click)="toggleConfirmPassword()"
+          title="{{ showConfirmPassword ? 'Hide password' : 'Show password' }}"
+          >{{ showConfirmPassword ? '🙈' : '👁️' }}</span
+        >
+      </div>
+      <div *ngIf="passwordMismatch && confirmPasswordInput.touched" class="error">
+        Passwords do not match.
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="
+          registerForm.invalid || passwordMismatch || !password || !confirmPassword
+        "
+      >
+        Register
+      </button>
+    </form>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+    
+<div *ngIf="success" class="success">
+  {{ success }}
+  <span *ngIf="redirecting" class="dot-loader">
+    <span></span><span></span><span></span>
+  </span>
+</div>
+
+
+    <p class="redirect">
+      Already have an account?
+      <a (click)="goToLogin()">Login here</a>
+    </p>
+  </div>
+</div>
