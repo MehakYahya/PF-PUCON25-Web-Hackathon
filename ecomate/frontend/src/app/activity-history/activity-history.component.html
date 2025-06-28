@@ -1,0 +1,25 @@
+<div class="history-container">
+  <h2>Activity History</h2>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+  <p *ngIf="activities.length === 0 && !error">No activity logged yet.</p>
+
+  <table *ngIf="activities.length > 0">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Emission (kg CO₂)</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of activities">
+        <td>{{ a.type }}</td>
+        <td>{{ a.amount }}</td>
+        <td>{{ a.emission | number:'1.2-2' }}</td>
+        <td>{{ a.date | date: 'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
