@@ -1,0 +1,25 @@
+<div class="activity-form">
+  <h2>Log Activity</h2>
+
+  <form (ngSubmit)="logActivity()">
+    <label for="type">Activity Type:</label>
+    <select id="type" [(ngModel)]="activityType" name="activityType" required>
+      <option value="">-- Select --</option>
+      <option value="car">Car (driving)</option>
+      <option value="bus">Bus</option>
+      <option value="bike">Bike</option>
+      <option value="walk">Walk</option>
+      <option value="tree">Tree Planting</option>
+    </select>
+
+    <label for="amount">
+      Amount (in {{ activityType === 'tree' ? 'trees' : 'km' }}):
+    </label>
+    <input type="number" id="amount" [(ngModel)]="amount" name="amount" required />
+
+    <button type="submit">Log Activity</button>
+  </form>
+
+  <p *ngIf="message" style="color: green;">{{ message }}</p>
+  <p *ngIf="error" style="color: red;">{{ error }}</p>
+</div>
