@@ -1,0 +1,32 @@
+.community-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1em;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0;
+  padding: 0.6em;
+}
+
+button {
+  padding: 0.5em 1em;
+  margin-top: 0.5em;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+li {
+  background: #eef;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 5px;
+}

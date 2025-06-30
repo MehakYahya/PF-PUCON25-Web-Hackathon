@@ -1,0 +1,25 @@
+<div class="community-container">
+  <h2>🌱 Join or Create a Community</h2>
+
+  <form (ngSubmit)="createCommunity()">
+    <input [(ngModel)]="name" name="name" placeholder="Community name" required />
+    <input [(ngModel)]="description" name="description" placeholder="Description (optional)" />
+    <button type="submit">Create</button>
+  </form>
+
+  <p *ngIf="message" class="success">{{ message }}</p>
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <h3>Available Communities</h3>
+  <ul *ngIf="communities.length > 0; else noComms">
+    <li *ngFor="let c of communities">
+      <strong>{{ c.name }}</strong> — {{ c.description || 'No description' }}
+      <span>({{ c.members?.length || 0 }} members)</span>
+      <button [routerLink]="['/community', c._id]"> View</button>
+    </li>
+  </ul>
+
+  <ng-template #noComms>
+    <p>No communities found.</p>
+  </ng-template>
+</div>
