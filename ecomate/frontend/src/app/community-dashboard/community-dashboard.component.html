@@ -13,6 +13,7 @@
       {{ member.name }}
     </li>
   </ul>
+  
 
  <!-- Buttons below the member list -->
 <div class="actions">
@@ -20,3 +21,4 @@
   <button *ngIf="isMember()" (click)="viewChallenges()">View Community Challenges</button>
 </div>
 </div>
+<button (click)="goToLeaderboard()">View Leaderboard</button>

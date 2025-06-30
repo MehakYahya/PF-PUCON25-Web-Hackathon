@@ -123,4 +123,9 @@ export class CommunityDashboardComponent implements OnInit {
   this.router.navigate([`/community/${this.communityId}/challenges`]);
 }
 
+goToLeaderboard() {
+  this.router.navigate([`/community/${this.communityId}/leaderboard`]);
 }
+
+}
+
