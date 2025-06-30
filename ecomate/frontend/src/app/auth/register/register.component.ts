@@ -59,4 +59,4 @@ togglePassword() {
     goToLogin() {
     this.router.navigate(['/login']);
   }
-}
+} 
