@@ -1,0 +1,50 @@
+/* Body Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+}
+
+/* Header Container */
+header {
+  background-color: #264653;
+  padding: 0.8rem 1.5rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex layout: logo left, nav right */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Style */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+/* Individual Link Styling */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover and Active States */
+.nav-links a:hover,
+.nav-links a.active {
+  background-color: #2a9d8f;
+}
