@@ -1,0 +1,38 @@
+.create-challenge-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.challenge-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.challenge-form input,
+.challenge-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
