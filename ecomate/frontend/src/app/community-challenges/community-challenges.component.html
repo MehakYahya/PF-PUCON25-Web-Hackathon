@@ -1,0 +1,46 @@
+<button class="back-btn" (click)="goBack()">← Back to Communities</button>
+<div class="actions">
+    <button class="create-btn" (click)="goToCreateChallenge()">
+      ➕ Create New Challenge
+    </button>
+  </div>
+  <div *ngIf="challenges.length === 0" class="empty-message">
+  No challenges available yet.
+</div>
+<ul *ngIf="challenges.length > 0" class="challenge-list">
+  <li *ngFor="let challenge of challenges" class="challenge-card">
+    <h3>{{ challenge.title }}</h3>
+    <p>{{ challenge.description }}</p>
+    <p><strong>Reward:</strong> {{ challenge.reward }} EcoPoints</p>
+    <p><strong>Deadline:</strong> {{ challenge.deadline | date }}</p>
+
+    <!-- Join/Contribute Buttons -->
+    <div class="challenge-actions">
+      <button 
+        *ngIf="!hasJoined(challenge)" 
+        (click)="joinChallenge(challenge._id)" 
+        class="join-btn"
+      >
+        ✅ Join Challenge
+      </button>
+
+  <div *ngIf="hasJoined(challenge)">
+  <button class="joined-btn" disabled>✔️ Joined</button>
+  <button (click)="goToContribute(challenge._id)" class="contribute-btn">➕ Contribute</button>
+
+      </div>
+    </div>
+
+    <!-- 👇 Add this block to show contributions -->
+    <div *ngIf="challenge.contributions?.length > 0" class="contributions">
+      <h4>Contributions:</h4>
+      <ul>
+        <li *ngFor="let c of challenge.contributions">
+          <strong>{{ c.user.name }}:</strong> {{ c.description }} ({{ c.points }} pts)
+        </li>
+      </ul>
+      
+    </div>
+
+  </li>
+</ul>
